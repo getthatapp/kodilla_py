@@ -1,0 +1,13 @@
+2023-03-21 21:32:10,415 The program was called with these parameters []
+2023-03-21 21:32:31,853 The program was called with these parameters ['19']
+2023-03-21 21:32:31,853 The first parameter is 19
+2023-03-21 21:32:31,853 Adult!
+2023-03-21 21:46:38,585 The program was called with these parameters ['19']
+2023-03-21 21:46:38,585 The first parameter is 19
+2023-03-21 21:46:38,585 Adult!
+2023-03-21 21:46:49,659 The program was called with these parameters ['19']
+2023-03-21 21:46:49,659 The first parameter is 19
+2023-03-21 21:46:49,660 Adult!
+2023-03-21 21:47:24,896 The program was called with these parameters ['19']
+2023-03-21 21:47:24,897 The first parameter is 19
+2023-03-21 21:47:24,897 Adult!
