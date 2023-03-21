@@ -11,3 +11,4 @@
 2023-03-21 21:47:24,896 The program was called with these parameters ['19']
 2023-03-21 21:47:24,897 The first parameter is 19
 2023-03-21 21:47:24,897 Adult!
+2023-03-21 21:52:51,657 The program was called with these parameters []
