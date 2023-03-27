@@ -25,8 +25,8 @@ if __name__ == '__main__':
 
         contact = Contact(first_name, last_name, company, job, email)
         contacts.append(contact)
-        contacts.sort(key=lambda x: x.first_name)
-        # contacts.sort(key=lambda x: x.last_name)
+        # contacts.sort(key=lambda x: x.first_name)
+        contacts.sort(key=lambda x: x.last_name)
 
     for contact in contacts:
         print(contact)
