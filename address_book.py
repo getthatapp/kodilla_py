@@ -13,6 +13,7 @@ class Contact:
     def __str__(self):
         return f'{self.first_name} {self.last_name}, {self.company}, {self.job}, {self.email}'
 
+
 if __name__ == '__main__':
 
     contacts = []
@@ -25,8 +26,6 @@ if __name__ == '__main__':
 
         contact = Contact(first_name, last_name, company, job, email)
         contacts.append(contact)
-
-    sorted_contacts = sorted(contacts, key=lambda x: (x.first_name, x.last_name, x.email))
-
-    for contact in sorted_contacts:
-        print(contact)
+def contact():
+    print(f'Kontaktuję się z: {first_name} {last_name}, {job}, {email}')
+contact()
