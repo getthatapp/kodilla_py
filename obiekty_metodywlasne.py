@@ -23,3 +23,4 @@ class Car:
             raise ValueError(f"Value {value} exceeds top speed of {self.top_speed}")
 
 car = Car(make="Ford", model_name="Mustang", top_speed=250, color="Red")
+print(car)
