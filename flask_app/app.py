@@ -19,9 +19,9 @@ def bloggo(id):
     return f'This blog entry #{id}'
 
 
-# @app.route('/greetings')
-# def greet():
-#     return 'Welcome to my greeting page!'
+@app.route('/')
+def greeting():
+    return 'Welcome to my greeting page!'
 
 
 @app.route('/message', methods=['GET', 'POST'])
