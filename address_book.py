@@ -1,6 +1,6 @@
 from faker import Faker
 
-fake = Faker()
+fake = Faker('pl_PL')
 
 
 class BaseContact:
