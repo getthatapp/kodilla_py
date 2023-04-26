@@ -6,8 +6,10 @@ class Car:
         self.color = color
 
         self._current_speed = 0
+
     def accelerate(self, step=10):
         self.current_speed += step
+
     def decelerate(self, step=10):
         self.current_speed -= step
 
@@ -22,5 +24,12 @@ class Car:
         else:
             raise ValueError(f"Value {value} exceeds top speed of {self.top_speed}")
 
-car = Car(make="Ford", model_name="Mustang", top_speed=250, color="Red")
-print(car)
+
+class Truck(Car):
+    def __init__(self, max_load, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.max_load = max_load
+
+
+truck = Truck(make="Mercedes", model_name="Sprinter", color="Black", top_speed=90, max_load=1200)
+car = Car(make="Ford", model_name="Mustang", top_speed=250, color="red")
