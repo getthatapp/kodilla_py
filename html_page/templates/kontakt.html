@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Kontakt{% endblock %}
+
+{% block content %}
+<h2>Kontakt:</h2>
+
+<ul>
+    <li><strong>Email: </strong><a href = "mailto: mail@yahoo.com">some_mail@yahoo.com</a></li>
+    <li><strong>Telefon: </strong>123123123</li>
+</ul>
+
+<h3>Wyślij wiadomość.</h3>
+<form action="{{ url_for('contact') }}" method="post">
+  <textarea name="message" rows="5" cols="50">Treść Twojej wiadomości....</textarea>
+  <br><br>
+  <input type="submit">
+</form>
+
+<p><a href="{{ url_for('home') }}">Strona główna</a></p>
+{% endblock %}
