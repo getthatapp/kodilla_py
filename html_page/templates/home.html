@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}O mnie{% endblock %}
+
+{% block content %}
+<h2>O mnie:</h2>
+
+<p><strong>Imię:</strong> Grzegorz</p>
+<p><strong>Nazwisko:</strong> Turek</p>
+
+<p><a href="{{ url_for('contact') }}">Kontakt ze mną</a></p>
+{% endblock %}
