@@ -38,19 +38,6 @@ def update_todo(todo_id):
     if not request.json:
         abort(400)
     data = request.json
-    if any([
-        'title' in data and not isinstance(data.get('title'), str),
-        'description' in data and not isinstance(data.get('description'), str),
-        'done' in data and not isinstance(data.get('done'), bool)
-    ]):
-        abort(400)
-    todo = {
-        'title': data.get('title', todo['title']),
-        'description': data.get('description', todo['description']),
-        'done': data.get('done', todo['done'])
-    }
-    todos.update(todo_id, todo)
-    return jsonify({'todo': todo})
 
 
 @app.route("/api/v1/todos/<int:todo_id>", methods=["DELETE"])
