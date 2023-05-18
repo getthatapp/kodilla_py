@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Biblioteka książek{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Biblioteka książek</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Okładka</th>
+                <th>ID</th>
+                <th>Autor</th>
+                <th>Tytuł</th>
+                <th>Opis</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td><img src="{{ book.cover }}" alt="Okładka" style="width: 100px;"></td>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
+    </div>
+</body>
+</html>

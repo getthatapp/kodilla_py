@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Książka: {{ book.title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Książka: {{ book.title }}</h1>
+        <p><strong>Autor:</strong> {{ book.author }}</p>
+        <p><strong>Opis:</strong> {{ book.description }}</p>
+        <img src="{{ book.cover }}" alt="Okładka" style="width: 100px;">
+    </div>
+{% endblock %}
+</body>
+</html>
