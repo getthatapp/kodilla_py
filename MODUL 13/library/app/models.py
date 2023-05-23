@@ -15,7 +15,7 @@ class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(75), nullable=False)
 
-    books = db.relationship('Book', backref='author', lazy=True)
+    books = db.relationship('Book', backref='author', lazy='dynamic')
 
 
 class Loan(db.Model):

@@ -1,40 +1,54 @@
 from flask import Blueprint, request, jsonify
-from . import db
+from .database import db
 from .models import Author, Book, Loan
 
 main = Blueprint('main', __name__)
 
 
+@main.route('/', methods=['GET'])
 @main.route('/books', methods=['GET', 'POST'])
 def books():
-    if request.method == 'GET':
-        books = Book.query.all()
-        return jsonify([{'title': b.title, 'description': b.description} for b in books])
-    else:
-        data = request.get_json()
-        new_book = Book(title=data['title'], description=data.get('description', ''),
-                        author_id=data['author_id'], isbn=data['isbn'],
-                        release_date=data['release_date'], is_loaned=data['is_loaned'])
-        db.session.add(new_book)
-        db.session.commit()
-        return jsonify({'message': 'Book added successfully'}), 201
+    books = Book.query.all()
+    return jsonify([{
+        'id': b.id,
+        'author': b.author.name,
+        'title': b.title,
+        'description': b.description,
+        'isbn': b.isbn,
+        'is_loaned': b.is_loaned,
+    } for b in books])
 
 
-@main.route('/books/<int:id>', methods=['GET', 'PUT', 'DELETE'])
-def book(id):
+@main.route('/books/<int:id>', methods=['GET'])
+def get_book(id):
     book = Book.query.get_or_404(id)
-    if request.method == 'GET':
-        return jsonify({'title': book.title, 'description': book.description})
-    elif request.method == 'PUT':
-        data = request.get_json()
-        book.title = data['title']
-        book.description = data.get('description', book.description)
-        db.session.commit()
-        return jsonify({'message': 'Book updated successfully'}), 200
-    else:
-        db.session.delete(book)
-        db.session.commit()
-        return jsonify({'message': 'Book deleted successfully'}), 200
+    return jsonify({
+        'id': book.id,
+        'author': book.author.name,
+        'title': book.title,
+        'description': book.description,
+        'isbn': book.isbn,
+        'is_loaned': book.is_loaned
+    })
+
+
+@main.route('/books/<int:id>', methods=['PUT'])
+def update_book(id):
+    book = Book.query.get_or_404(id)
+    data = request.get_json()
+    book.title = data['title']
+    book.description = data.get('description', book.description)
+    db.session.commit()
+    return jsonify({'message': 'Book updated successfully'}), 200
+
+
+@main.route('/books/<int:id>', methods=['DELETE'])
+def delete_book(id):
+    book = Book.query.get_or_404(id)
+    db.session.delete(book)
+    db.session.commit()
+    return jsonify({'message': 'Book deleted successfully'}), 200
+
 
 @main.route('/authors/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def author(id):
@@ -51,6 +65,7 @@ def author(id):
         db.session.commit()
         return jsonify({'message': 'Author deleted successfully'}), 200
 
+
 @main.route('/loans', methods=['GET', 'POST'])
 def loans():
     if request.method == 'GET':
@@ -62,6 +77,7 @@ def loans():
         db.session.add(new_loan)
         db.session.commit()
         return jsonify({'message': 'Book loaned successfully'}), 201
+
 
 @main.route('/loans/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def loan(id):

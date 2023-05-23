@@ -1,2 +1,2 @@
 FLASK_APP=biblioteka
-FLASK_ENV=development
+FLASK_ENV=development flask run
